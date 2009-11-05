@@ -1,3 +1,7 @@
+# template style and some of this from http://railscasts.com/episodes/148-app-templates-in-rails-2-3
+# thanks for teaching me Rails, Mr. Bates
+
+
 # app stuff
 run "echo TODO > README"
 
