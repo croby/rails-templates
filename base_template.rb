@@ -19,9 +19,14 @@ if yes?("Need authentication?")
   route "map.logout '/logout', :controller => 'session', :action => 'destroy'"
 end
 
+gem "simple_layout"
+rake "gems:install"
+
 generate :controller, "home"
 route "map.root :controller => 'home'"
 git :rm => "public/index.html"
+
+run "cp config/database.yml config/example_database.yml"
 
 # git stuff
 git :init
@@ -34,6 +39,5 @@ config/database.yml
 END
 
 run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
-run "cp config/database.yml config/example_database.yml"
 
 git :add => ".", :commit => "-m 'initial commit'"
