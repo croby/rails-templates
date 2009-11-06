@@ -20,11 +20,22 @@ if yes?("Need authentication?")
 end
 
 gem "simple_layout"
+gem "capistrano"
+gem "capistrano-ext"
+
 rake "gems:install"
 
-generate :controller, "home"
+generate :simple_layout, "xhtml1-strict" 
+
+
+run "Capify ."
+run "mkdir config/deploy"
+
+# TODO add capistrano-ext generator
+
+generate :controller, "home", "index"
 route "map.root :controller => 'home'"
-git :rm => "public/index.html"
+
 
 run "cp config/database.yml config/example_database.yml"
 
@@ -40,4 +51,6 @@ END
 
 run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
 
-git :add => ".", :commit => "-m 'initial commit'"
+git :add => "."
+git :rm => "public/index.html"
+git :commit => "-m 'initial commit'"
