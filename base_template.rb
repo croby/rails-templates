@@ -14,9 +14,6 @@ end
 if yes?("Need authentication?")
   plugin "restful-authentication", :git => "git://github.com/technoweenie/restful-authentication.git"
   generate :authenticated, "user", "sessions"
-  route "map.signup  '/signup', :controller => 'users',   :action => 'new'"
-  route "map.login  '/login',  :controller => 'session', :action => 'new'"
-  route "map.logout '/logout', :controller => 'session', :action => 'destroy'"
 end
 
 gem "simple_layout"
