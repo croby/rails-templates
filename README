@@ -1,0 +1,1 @@
+rails -m <url-to-rails-template-raw>
